@@ -8,6 +8,9 @@ const {SALT} = require('../config/serverConfig');
 module.exports = (sequelize, DataTypes) => {
   class User extends Model {
     static associate(models) {
+      this.belongsToMany(models.Role,{
+        through: 'User_Roles'
+      });
     }
   }
   User.init({
